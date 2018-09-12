@@ -12,7 +12,7 @@ import { JwtAuthService } from './services/jwt-auth.service';
 export class AppComponent {
   title = 'e-teacher';
   public user = [];
-  public type:boolean;
+  public type:string;
   public loggedIn : boolean;
   constructor(private Auth : AuthService, private router: Router,private Token : TokenService,private Jwt: JwtAuthService) {
     
