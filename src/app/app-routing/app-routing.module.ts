@@ -10,6 +10,7 @@ import { LoginComponent } from '../components/login/login.component';
 import { RegisterComponent } from '../components/register/register.component';
 import { BeforeLoginService } from '../services/before-login.service';
 import { AfterLoginService } from '../services/after-login.service';
+import { RoleGuardsService } from '../services/role-guards.service';
 
 const routes: Routes = [
   {
@@ -35,7 +36,7 @@ const routes: Routes = [
   {
     path: "students",
     component: StudentsComponent,
-    canActivate: [AfterLoginService]
+    canActivate: [AfterLoginService,RoleGuardsService]
   },
   {
     path: "lessons",

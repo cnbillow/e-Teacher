@@ -11,6 +11,8 @@ export class JwtAuthService {
 
   private baseUrl = 'http://localhost:8000/api';
 
+  public type;
+
   constructor(private http: HttpClient, private token: TokenService) { }
 
   signup(data){
@@ -29,10 +31,16 @@ export class JwtAuthService {
   }
 
   getUserData(): Observable<IUser[]> {
-    
     const httpHeaders = new HttpHeaders()
     .set('Content-Type','application/json')
     .set('Authorization','Bearer '+this.token.get());
     return this.http.get<IUser[]>(`${this.baseUrl}/getUserDetails`,{headers: httpHeaders});
+  }
+
+  getType(){
+    this.getUserData().subscribe(
+      data => this.type = data['type']
+    );
+    return this.type;
   }
 }
