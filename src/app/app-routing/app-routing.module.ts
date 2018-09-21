@@ -11,11 +11,18 @@ import { RegisterComponent } from '../components/register/register.component';
 import { BeforeLoginService } from '../services/before-login.service';
 import { AfterLoginService } from '../services/after-login.service';
 import { RoleGuardsService } from '../services/role-guards.service';
+import { ClassComponent } from '../components/class/class.component';
+import { LessonDetailsComponent } from '../components/lesson-details/lesson-details.component';
+import { SubjectsComponent } from '../components/subjects/subjects.component';
+import { RegisterSubjectComponent } from '../components/register-subject/register-subject.component';
+import { CoursesComponent } from '../components/courses/courses.component';
+import { CoursesClassComponent } from '../components/courses-class/courses-class.component';
+import { CourseDetailsComponent } from '../components/course-details/course-details.component';
 
 const routes: Routes = [
   {
     path: "",
-    redirectTo: "/login",
+    redirectTo: "/dashboard",
     pathMatch: "full"
   },
   {
@@ -36,7 +43,7 @@ const routes: Routes = [
   {
     path: "students",
     component: StudentsComponent,
-    canActivate: [AfterLoginService,RoleGuardsService]
+    canActivate: [AfterLoginService]
   },
   {
     path: "lessons",
@@ -44,7 +51,37 @@ const routes: Routes = [
     canActivate: [AfterLoginService]
   },
   {
-    path: "profile",
+    path: "lessons/:id",
+    component: ClassComponent,
+    canActivate: [AfterLoginService]
+  },
+  {
+    path: "lessons/:id/lesson/:id",
+    component: LessonDetailsComponent,
+    canActivate: [AfterLoginService]
+  },
+  {
+    path: "your-courses",
+    component: SubjectsComponent,
+    canActivate: [AfterLoginService]
+  },
+  {
+    path: "your-courses/:id",
+    component: CoursesClassComponent,
+    canActivate: [AfterLoginService]
+  },
+  {
+    path: "your-courses/:id/lesson/:id",
+    component: CourseDetailsComponent,
+    canActivate: [AfterLoginService]
+  },
+  {
+    path: "courses",
+    component: CoursesComponent,
+    canActivate: [AfterLoginService]
+  },
+  {
+    path: "settings",
     component: ProfileComponent,
     canActivate: [AfterLoginService]
   },

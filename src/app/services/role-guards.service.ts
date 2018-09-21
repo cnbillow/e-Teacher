@@ -16,7 +16,7 @@ export class RoleGuardsService implements CanActivate{
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean>|Promise<boolean>|boolean {
-    if(this.Jwt.getType() == 'admin'){
+    if(this.Jwt.getType() == 'admin' || this.Jwt.getType() == 'teacher'){
       return true;
     }
     return false;

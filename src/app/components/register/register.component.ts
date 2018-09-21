@@ -14,10 +14,12 @@ export class RegisterComponent implements OnInit {
   public form = {
     name: null,
     email: null,
+    teacher: null,
     password: null,
     password_confirmation: null
   };
-public error = null;
+  public teachers = [];
+  public error = null;
 
   constructor(
     private Jwt: JwtAuthService,
@@ -27,8 +29,14 @@ public error = null;
   ) { }
 
   ngOnInit() {
+    // this.Jwt.getTeachers().subscribe(
+    //   data => this.teachers = data,
+    // );
   }
 
+  btnTeachers(){
+    console.log(this.form.teacher)
+  }
   onSubmit(){
     this.Jwt.signup(this.form).subscribe(
       data => this.handleResponse(data),

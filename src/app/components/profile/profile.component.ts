@@ -12,6 +12,8 @@ import { Router } from '@angular/router';
 export class ProfileComponent implements OnInit {
 
   public user = [];
+  public teachers = [];
+  public yourTeachers = [];
   public error = null;
   constructor(private Jwt: JwtAuthService,private Token: TokenService, private Auth: AuthService, private router: Router) { }
 
@@ -19,20 +21,24 @@ export class ProfileComponent implements OnInit {
     this.Jwt.getUserData().subscribe(
       data => this.user = data,
     );
+    this.Jwt.getTeachers().subscribe(
+      data => this.teachers = data,
+    );
+    this.Jwt.getYourTeachers().subscribe(
+      data => this.yourTeachers = data,
+    );
   }
 
   onSubmit(){
     this.Jwt.update(this.user).subscribe(
-      data => this.handleResponse(data),
+      data => {
+        console.log(data)
+        this.router.navigate(['/dashboard']);
+      },
       error => console.log(error)
     );
   }
 
-  handleResponse(data) {
-    this.Token.handle(data.access_token);
-    this.Auth.changeAuthStatus(true);
-    this.router.navigateByUrl('/dashboard');
-  }
 
   handleError(error) {
     this.error = error.error.error;

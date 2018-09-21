@@ -1,5 +1,26 @@
-
-<div class="col-md-12 card">
-  Students works<br>
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem magni vero explicabo, accusamus distinctio quo ratione dolor ab sint cumque accusantium ut excepturi, itaque expedita. Obcaecati illo odit nam sequi.
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 card">
+      <div class="">
+        <table class="table">
+          <thead class="thead-light">
+            <tr>
+              <th>Id</th>
+              <th>Lastname</th>
+              <th>Email</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let student of students">
+              <td>{{ student.id }}</td>
+              <td>{{ student.name }}</td>
+              <td>{{ student.email }}</td>
+              <td><a class="btnDelete btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" (click)="onDelete(student)"><i class="now-ui-icons ui-1_simple-remove"></i></a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>

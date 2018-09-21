@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { JwtAuthService } from '../../services/jwt-auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-students',
@@ -7,9 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudentsComponent implements OnInit {
 
-  constructor() { }
+  public students = [];
+  constructor(private Jwt: JwtAuthService, private router: Router) { }
 
   ngOnInit() {
+    this.Jwt.getYourStudents().subscribe(
+      data => this.students = data,
+    );
+  }
+  onSubmit(){
+    console.log(this.students)
   }
 
+  onDelete(student){
+    if(confirm("Are you sure to delete "+student.name)) {
+      this.Jwt.deleteStudent(student.id).subscribe(
+        data => {
+          this.router.navigate(['/dashboard']);
+        },
+        error => console.log(error)
+      );
+    }
+  }
 }

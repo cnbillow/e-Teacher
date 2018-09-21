@@ -15,22 +15,34 @@
           <p>Dashboard</p>
         </a>
       </li>
-      <li routerLinkActive="active" *ngIf="user.type == 'admin'">
-        <a routerLink="/students">
-          <i class="now-ui-icons education_atom"></i>
-          <p>Students</p>
+      <li routerLinkActive="active">
+        <a routerLink="/courses">
+          <i class="now-ui-icons education_paper"></i>
+          <p>courses</p>
         </a>
       </li>
       <li routerLinkActive="active">
         <a routerLink="/lessons">
-          <i class="now-ui-icons business_bulb-63"></i>
+          <i class="now-ui-icons education_atom"></i>
           <p>lessons</p>
         </a>
       </li>
       <li routerLinkActive="active">
-        <a routerLink="/profile">
-          <i class="now-ui-icons users_single-02"></i>
-          <p>User Profile</p>
+          <a routerLink="/your-courses">
+            <i class="now-ui-icons education_atom"></i>
+            <p>Your courses</p>
+          </a>
+        </li>
+      <li routerLinkActive="active">
+          <a routerLink="/students">
+            <i class="now-ui-icons education_glasses"></i>
+            <p>Students</p>
+          </a>
+        </li>
+      <li routerLinkActive="active">
+        <a routerLink="/settings">
+          <i class="now-ui-icons ui-1_settings-gear-63"></i>
+          <p>Settings</p>
         </a>
       </li>
     </ul>
