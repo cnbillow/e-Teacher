@@ -92,6 +92,36 @@ export class JwtAuthService {
     return this.http.get<ITeacher[]>(`${this.baseUrl}/enrollCourse/`+id,{headers: httpHeaders});
   }
 
+  getEnrolledCourses(): Observable<ITeacher[]>{
+    const httpHeaders = new HttpHeaders()
+    .set('Content-Type','application/json')
+    .set('Authorization','Bearer '+this.token.get());
+    return this.http.get<ITeacher[]>(`${this.baseUrl}/getEnrolledCourses`,{headers: httpHeaders});
+  }
+
+  getEnrolledCourseLessons(id): Observable<ILesson[]>{
+    const httpHeaders = new HttpHeaders()
+    .set('Content-Type','application/json')
+    .set('Authorization','Bearer '+this.token.get());
+    return this.http.get<ILesson[]>(`${this.baseUrl}/getEnrolledCourseLessons/`+id,{headers: httpHeaders});
+  }
+
+  getEnrolledCourseLessonDetails(id): Observable<ILesson[]>{
+    const httpHeaders = new HttpHeaders()
+    .set('Content-Type','application/json')
+    .set('Authorization','Bearer '+this.token.get());
+    return this.http.get<ILesson[]>(`${this.baseUrl}/getEnrolledCourseLessonDetails/`+id,{headers: httpHeaders});
+  }
+
+
+
+
+
+
+
+
+
+
   getTeachers(): Observable<IUser[]> {
     return this.http.get<IUser[]>(`${this.baseUrl}/getTeachers`);
   }
@@ -112,12 +142,7 @@ export class JwtAuthService {
 
   
 
-  getLessonDetails(id): Observable<ILesson[]>{
-    const httpHeaders = new HttpHeaders()
-    .set('Content-Type','application/json')
-    .set('Authorization','Bearer '+this.token.get());
-    return this.http.get<ILesson[]>(`${this.baseUrl}/getLessonDetails/`+id,{headers: httpHeaders});
-  }
+  
 
   getYourStudents(): Observable<IStudent[]>{
     const httpHeaders = new HttpHeaders()
@@ -126,10 +151,10 @@ export class JwtAuthService {
     return this.http.get<IStudent[]>(`${this.baseUrl}/getYourStudents`,{headers: httpHeaders});
   }
 
-  deleteStudent(id){
+  deleteStudent(id,subject_id){
     const httpHeaders = new HttpHeaders()
     .set('Content-Type','application/json')
     .set('Authorization','Bearer '+this.token.get());
-    return this.http.get(`${this.baseUrl}/deleteStudent/`+id,{headers: httpHeaders,responseType: 'text'});
+    return this.http.get(`${this.baseUrl}/deleteStudent/`+id+'/'+subject_id,{headers: httpHeaders,responseType: 'text'});
   }
 }

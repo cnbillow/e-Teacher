@@ -23,9 +23,9 @@ export class StudentsComponent implements OnInit {
 
   onDelete(student){
     if(confirm("Are you sure to delete "+student.name)) {
-      this.Jwt.deleteStudent(student.id).subscribe(
+      this.Jwt.deleteStudent(student.id,student.subject_id).subscribe(
         data => {
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/students']);
         },
         error => console.log(error)
       );

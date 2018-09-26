@@ -22,7 +22,7 @@ import { CourseDetailsComponent } from '../components/course-details/course-deta
 const routes: Routes = [
   {
     path: "",
-    redirectTo: "/dashboard",
+    redirectTo: "/courses",
     pathMatch: "full"
   },
   {

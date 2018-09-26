@@ -16,9 +16,11 @@ export class ClassComponent implements OnInit {
   ngOnInit() {
     let id = parseInt(this.route.snapshot.paramMap.get('id'));
     this.Id = id;
-    // this.Jwt.getLessonsOfYourTeacher(id).subscribe(
-    //   data => this.lessons = data,
-    // );
+    this.Jwt.getEnrolledCourseLessons(id).subscribe(
+      data => {
+        this.lessons = data
+      }
+    );
   }
 
   onSubmit(){

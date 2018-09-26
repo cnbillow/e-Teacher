@@ -21,12 +21,6 @@ export class ProfileComponent implements OnInit {
     this.Jwt.getUserData().subscribe(
       data => this.user = data,
     );
-    this.Jwt.getTeachers().subscribe(
-      data => this.teachers = data,
-    );
-    this.Jwt.getYourTeachers().subscribe(
-      data => this.yourTeachers = data,
-    );
   }
 
   onSubmit(){

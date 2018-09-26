@@ -8,6 +8,7 @@
               <th>Id</th>
               <th>Lastname</th>
               <th>Email</th>
+              <th>Course</th>
               <th></th>
             </tr>
           </thead>
@@ -16,6 +17,7 @@
               <td>{{ student.id }}</td>
               <td>{{ student.name }}</td>
               <td>{{ student.email }}</td>
+              <td>{{ student.subject }}</td>
               <td><a class="btnDelete btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" (click)="onDelete(student)"><i class="now-ui-icons ui-1_simple-remove"></i></a></td>
             </tr>
           </tbody>

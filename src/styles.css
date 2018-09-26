@@ -27,3 +27,21 @@ th{
     -webkit-line-clamp: 4 !important;
     -webkit-box-orient: vertical !important;
 }
+
+.form-control:focus{
+    border-color: #23466E !important;
+
+}
+
+.enrollCourse{
+    position: relative !important;
+}
+.cover{
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    background-color: aqua !important;
+    width: 100%;
+    height: 100%;
+    display: none;
+}

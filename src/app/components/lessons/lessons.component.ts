@@ -11,21 +11,22 @@ import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 })
 export class LessonsComponent implements OnInit {
 
-  // public yourTeachers: ITeacher[] = [{ id: null,name:null}];
+  public enrolledCourses = [];
   constructor(private Jwt: JwtAuthService, private router: Router, private spinnerService: Ng4LoadingSpinnerService) { }
 
   ngOnInit() {
     // this.spinnerService.show();
-    // this.Jwt.getYourTeachers().subscribe(
-    //   data => {
-    //     this.yourTeachers = data
-    //     // this.spinnerService.hide();
-    //   }
-    // );
+    this.Jwt.getEnrolledCourses().subscribe(
+      data => {
+        this.enrolledCourses = data,
+        console.log(this.enrolledCourses)
+        // this.spinnerService.hide();
+      }
+    );
   }
 
-  onSelect(teacher){
-    this.router.navigate(['/lessons',teacher.id])
+  onSelect(course){
+    this.router.navigate(['/lessons',course.subject_id])
   }
 
 }

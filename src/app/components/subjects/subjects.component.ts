@@ -22,9 +22,9 @@ export class SubjectsComponent implements OnInit  {
     );
   }
   onSubmit(){
-    this.Jwt.addTeacher(this.course).subscribe(
-      data => {
-      }
+    this.Jwt.addTeacher(this.course).subscribe();
+    this.Jwt.getSubjects().subscribe(
+      data => this.subjects = data
     );
   }
 

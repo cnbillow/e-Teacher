@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class CoursesComponent implements OnInit {
 
   public courses = [];
+  public toggle = false;
 
   constructor(private Jwt: JwtAuthService, private router: Router) { }
 
@@ -27,5 +28,13 @@ export class CoursesComponent implements OnInit {
       }
     );
   }
+
+  mouseEnter(){
+    // console.log("HOVER")
+    this.toggle = true;
+ }
+ mouseLeave(){
+   this.toggle = false;
+ }
 
 }

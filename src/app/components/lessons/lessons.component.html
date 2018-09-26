@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row">
       <ng4-loading-spinner> </ng4-loading-spinner>
-      <div class="col-md-4" *ngFor="let teacher of yourTeachers">
-          <a (click)="onSelect(teacher)" >
+      <div class="col-md-4" *ngFor="let course of enrolledCourses">
+          <a (click)="onSelect(course)" >
             <div class="card pr-2 a-teacher">
-              <div class="card-header"><strong>{{teacher.name}}</strong></div>
-              <div class="card-body">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quidem, inventore. Quam sapiente iste, temporibus animi eum, provident quas eos eius molestias minus placeat fugit quasi. Id harum deserunt veniam error.</div>
-              <div class="card-footer">{{teacher.name}}</div>
+              <div class="card-header"><strong>{{course.name}}</strong></div>
+              <div class="card-body">{{course.description}}</div>
+              <div class="card-footer"><strong>{{course.subject}}</strong></div>
             </div>
           </a>
       </div>
