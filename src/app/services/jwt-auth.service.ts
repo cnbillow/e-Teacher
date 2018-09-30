@@ -27,7 +27,6 @@ export class JwtAuthService {
     return this.http.post(`${this.baseUrl}/login`,data);
   }
 
-
   update(data){
     const httpHeaders = new HttpHeaders()
     .set('Authorization','Bearer '+this.token.get());
@@ -77,6 +76,26 @@ export class JwtAuthService {
     .set('Authorization','Bearer '+this.token.get());
     return this.http.get<ILesson[]>(`${this.baseUrl}/getYourLessonDetails/`+id,{headers: httpHeaders});
   }
+
+  getLesson(id): Observable<ILesson>{
+    const httpHeaders = new HttpHeaders()
+    .set('Content-Type','application/json')
+    .set('Authorization','Bearer '+this.token.get());
+    return this.http.get<ILesson>(`${this.baseUrl}/getLesson/`+id,{headers: httpHeaders})
+  }
+
+  editLesson(data){
+    const httpHeaders = new HttpHeaders()
+    .set('Authorization','Bearer '+this.token.get());
+    return this.http.post(`${this.baseUrl}/editLesson`,data,{headers: httpHeaders,responseType: 'text'});
+  }
+
+  deleteLesson(lesson_id){
+    const httpHeaders = new HttpHeaders()
+    .set('Content-Type','application/json')
+    .set('Authorization','Bearer '+this.token.get());
+    return this.http.get(`${this.baseUrl}/deleteLesson/`+lesson_id,{headers: httpHeaders,responseType: 'text'});
+  }
   
   getCourses(): Observable<ITeacher[]> {
     const httpHeaders = new HttpHeaders()
@@ -113,17 +132,11 @@ export class JwtAuthService {
     return this.http.get<ILesson[]>(`${this.baseUrl}/getEnrolledCourseLessonDetails/`+id,{headers: httpHeaders});
   }
 
-
-
-
-
-
-
-
-
-
-  getTeachers(): Observable<IUser[]> {
-    return this.http.get<IUser[]>(`${this.baseUrl}/getTeachers`);
+  deleteCourse(subject_id){
+    const httpHeaders = new HttpHeaders()
+    .set('Content-Type','application/json')
+    .set('Authorization','Bearer '+this.token.get());
+    return this.http.get(`${this.baseUrl}/deleteCourse/`+subject_id,{headers: httpHeaders,responseType: 'text'});
   }
 
   getType(){
@@ -132,18 +145,7 @@ export class JwtAuthService {
     );
     return this.type;
   }
-
-  getYourTeachers(): Observable<ITeacher[]>{
-    const httpHeaders = new HttpHeaders()
-    .set('Content-Type','application/json')
-    .set('Authorization','Bearer '+this.token.get());
-    return this.http.get<ITeacher[]>(`${this.baseUrl}/getYourTeachers`,{headers: httpHeaders});
-  }
-
   
-
-  
-
   getYourStudents(): Observable<IStudent[]>{
     const httpHeaders = new HttpHeaders()
     .set('Content-Type','application/json')

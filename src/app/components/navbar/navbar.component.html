@@ -17,7 +17,7 @@
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navigation">
         <ul class="navbar-nav">
-          <li class="nav-item">
+          <li class="nav-item" *ngIf="type == 'teacher'">
             <a class="nav-link" routerLink="/post">
               <i class="now-ui-icons business_bulb-63"></i>
               <p>

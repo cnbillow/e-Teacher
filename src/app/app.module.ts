@@ -17,6 +17,7 @@ import { AfterLoginService } from './services/after-login.service';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AngularEditorModule } from '@kolkov/angular-editor';
+import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { ClassComponent } from './components/class/class.component';
 import { LessonDetailsComponent } from './components/lesson-details/lesson-details.component';
 import { SubjectsComponent } from './components/subjects/subjects.component';
@@ -24,6 +25,7 @@ import { RegisterSubjectComponent } from './components/register-subject/register
 import { CoursesComponent } from './components/courses/courses.component';
 import { CoursesClassComponent } from './components/courses-class/courses-class.component';
 import { CourseDetailsComponent } from './components/course-details/course-details.component';
+import { EditLessonComponent } from './components/edit-lesson/edit-lesson.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,8 @@ import { CourseDetailsComponent } from './components/course-details/course-detai
     RegisterSubjectComponent,
     CoursesComponent,
     CoursesClassComponent,
-    CourseDetailsComponent
+    CourseDetailsComponent,
+    EditLessonComponent
   ],
   imports: [
     BrowserModule,
@@ -51,6 +54,7 @@ import { CourseDetailsComponent } from './components/course-details/course-detai
     HttpClientModule,
     FormsModule,
     AngularEditorModule,
+    LoadingBarHttpClientModule,
     Ng4LoadingSpinnerModule.forRoot()
   ],
   providers: [BeforeLoginService,AfterLoginService],

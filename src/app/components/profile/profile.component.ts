@@ -13,7 +13,6 @@ export class ProfileComponent implements OnInit {
 
   public user = [];
   public teachers = [];
-  public yourTeachers = [];
   public error = null;
   constructor(private Jwt: JwtAuthService,private Token: TokenService, private Auth: AuthService, private router: Router) { }
 
@@ -26,8 +25,7 @@ export class ProfileComponent implements OnInit {
   onSubmit(){
     this.Jwt.update(this.user).subscribe(
       data => {
-        console.log(data)
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/courses']);
       },
       error => console.log(error)
     );

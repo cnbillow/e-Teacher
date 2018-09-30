@@ -19,6 +19,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
     this.Jwt.getUserData().subscribe(data => {
       this.user = data;
+      this.type = data['type'];
    });
   }
 

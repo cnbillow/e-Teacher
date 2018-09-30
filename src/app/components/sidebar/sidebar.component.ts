@@ -21,7 +21,4 @@ export class SidebarComponent implements OnInit {
    });
   }
 
-  onSubmit(){
-    console.log(this.Jwt.getType())
-  }
 }

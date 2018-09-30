@@ -18,13 +18,34 @@ export class CoursesClassComponent implements OnInit {
     this.Id = id;
     this.Jwt.getYourLessons(id).subscribe(
       data => {
-        this.lessons = data
+        this.lessons = data,
+        console.log(this.lessons)
       }
     );
   }
 
   onSelect(lesson){
     this.router.navigate(['/your-courses/'+this.Id+'/lesson/',lesson.id])
+  }
+
+  onDelete(lesson){
+    if(confirm("Are you sure to delete this lesson")) {
+      this.Jwt.deleteLesson(lesson.id).subscribe(
+        data => {
+          this.Jwt.getYourLessons(this.Id).subscribe(
+            data => {
+              this.lessons = data
+            }
+          );
+          this.router.navigate(['/your-courses/'+this.Id]);
+        },
+        error => console.log(error)
+      );
+    }
+  }
+
+  onEdit(lesson){
+    this.router.navigate(['/edit-lesson/'+lesson.id]);
   }
 
 }

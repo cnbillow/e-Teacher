@@ -18,9 +18,7 @@ export class LessonsComponent implements OnInit {
     // this.spinnerService.show();
     this.Jwt.getEnrolledCourses().subscribe(
       data => {
-        this.enrolledCourses = data,
-        console.log(this.enrolledCourses)
-        // this.spinnerService.hide();
+        this.enrolledCourses = data
       }
     );
   }
@@ -29,4 +27,19 @@ export class LessonsComponent implements OnInit {
     this.router.navigate(['/lessons',course.subject_id])
   }
 
+  onDelete(course){
+    if(confirm("Are you sure to delete "+course.subject)) {
+      this.Jwt.deleteCourse(course.subject_id).subscribe(
+        data => {
+          this.Jwt.getEnrolledCourses().subscribe(
+            data => {
+              this.enrolledCourses = data
+            }
+          );
+          this.router.navigate(['/lessons']);
+        },
+        error => console.log(error)
+      );
+    }
+  }
 }

@@ -18,6 +18,7 @@ import { RegisterSubjectComponent } from '../components/register-subject/registe
 import { CoursesComponent } from '../components/courses/courses.component';
 import { CoursesClassComponent } from '../components/courses-class/courses-class.component';
 import { CourseDetailsComponent } from '../components/course-details/course-details.component';
+import { EditLessonComponent } from '../components/edit-lesson/edit-lesson.component';
 
 const routes: Routes = [
   {
@@ -88,6 +89,11 @@ const routes: Routes = [
   {
     path: "post",
     component: PostComponent,
+    canActivate: [AfterLoginService]
+  },
+  {
+    path: "edit-lesson/:id",
+    component: EditLessonComponent,
     canActivate: [AfterLoginService]
   }
 ];

@@ -1,14 +1,25 @@
+<ngx-loading-bar color="#fff" height="3px"></ngx-loading-bar>
 <div class="container">
   <div class="row">
       <ng4-loading-spinner> </ng4-loading-spinner>
       <div class="col-md-4" *ngFor="let course of enrolledCourses">
-          <a (click)="onSelect(course)" >
+          
             <div class="card pr-2 a-teacher">
-              <div class="card-header"><strong>{{course.name}}</strong></div>
-              <div class="card-body">{{course.description}}</div>
+              <div class="card-header">
+                <strong>{{course.name}}</strong>
+                <div class="remove pull-right">
+                  <a (click)="onDelete(course)"><i class="now-ui-icons ui-1_simple-remove" style="color:red"></i></a>
+                </div>
+              </div>
+              <a (click)="onSelect(course)">
+              <div class="card-body"style="overflow: hidden;
+              display: -webkit-box;
+              -webkit-line-clamp: 5;
+              line-height:25px;
+              -webkit-box-orient: vertical">{{course.description}}</div>
               <div class="card-footer"><strong>{{course.subject}}</strong></div>
+              </a>
             </div>
-          </a>
       </div>
   </div>
 </div>

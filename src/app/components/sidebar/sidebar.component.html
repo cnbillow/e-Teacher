@@ -27,13 +27,13 @@
           <p>lessons</p>
         </a>
       </li>
-      <li routerLinkActive="active">
+      <li routerLinkActive="active" *ngIf="type == 'teacher'">
           <a routerLink="/your-courses">
-            <i class="now-ui-icons education_atom"></i>
+            <i class="now-ui-icons education_paper"></i>
             <p>Your courses</p>
           </a>
         </li>
-      <li routerLinkActive="active">
+      <li routerLinkActive="active" *ngIf="type == 'teacher'">
           <a routerLink="/students">
             <i class="now-ui-icons education_glasses"></i>
             <p>Students</p>

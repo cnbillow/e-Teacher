@@ -1,9 +1,16 @@
+<ngx-loading-bar color="#fff" height="3px"></ngx-loading-bar>
 <div class="container">
   <div class="row">
     <div class="col-md-12">
       <div class="row card a-teacher" *ngFor="let lesson of lessons">
           <a (click)="onSelect(lesson)">
-            <div class="card-header"><strong>{{lesson.title}}</strong></div>
+            <div class="card-header">
+              <strong>{{lesson.title}}</strong>
+              <div class="remove pull-right">
+                <a (click)="onEdit(lesson)" class="mr-2"><i class="now-ui-icons files_single-copy-04"></i></a>
+                <a (click)="onDelete(lesson)"><i class="now-ui-icons ui-1_simple-remove" style="color:red"></i></a>
+              </div>
+            </div>
             <!-- <div class="card-body">{{lesson.body}}</div> -->
             <div class="card-footer">{{ lesson.created_at }}</div>
           </a>

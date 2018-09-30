@@ -11,26 +11,35 @@ export class CoursesComponent implements OnInit {
 
   public courses = [];
   public toggle = false;
+  public clicked = false;
 
   constructor(private Jwt: JwtAuthService, private router: Router) { }
 
   ngOnInit() {
     this.Jwt.getCourses().subscribe(
-      data => this.courses = data
-    );
-  }
-
-  onSelect(course){
-    // console.log(course)
-    this.Jwt.enrollCourse(course.id).subscribe(
       data => {
-        this.router.navigate(['/lessons']);
+        this.courses = data
       }
     );
   }
 
-  mouseEnter(){
-    // console.log("HOVER")
+  onSelect(course){
+    this.clicked = true;
+    this.Jwt.enrollCourse(course.id).subscribe(
+      data => {
+        this.Jwt.getCourses().subscribe(
+          data => {
+            this.courses = data
+          }
+        );
+        this.router.navigate(['/courses']);
+        this.clicked = false;
+      }
+    );
+  }
+
+  mouseEnter(index){
+    console.log(index)
     this.toggle = true;
  }
  mouseLeave(){
