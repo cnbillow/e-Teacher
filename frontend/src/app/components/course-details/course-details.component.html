@@ -1,0 +1,10 @@
+<ngx-loading-bar color="#fff" height="3px"></ngx-loading-bar>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 card">
+      <div class="card-header"><h4 class="text-center">{{lesson.title}}</h4></div>
+      <div class="card-body"><div [innerHTML]="lesson.body"></div></div>
+      <div class="card-footer">{{ lesson.created_at }}</div>
+    </div>
+  </div>
+</div>

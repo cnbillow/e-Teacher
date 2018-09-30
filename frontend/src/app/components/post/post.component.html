@@ -1,0 +1,32 @@
+<ngx-loading-bar color="#fff" height="3px"></ngx-loading-bar>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 card">
+            <form #postLessonForm=ngForm (ngSubmit)="onSubmit()" class="mt-4">
+                
+                <div class="form-group">
+                    <div>
+                        <select class="form-control custom-select" name="subject_id" [(ngModel)]="lesson.subject_id" required>
+                            <option *ngFor="let subject of subjects" [ngValue]="subject.id">{{subject.subject}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div>
+                        <input type="text" name="title" [(ngModel)]="lesson.title" class="form-control" id="inputTitle3" placeholder="Title" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div>
+                        <angular-editor [config]="config" name="body" [(ngModel)]="lesson.body" required></angular-editor>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div>
+                        <button type="submit" class="btn btn-primary" [disabled]="!postLessonForm.valid">Post</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+<ngx-loading-bar color="#fff" height="3px"></ngx-loading-bar>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 card">
+            <form #editLessonForm=ngForm (ngSubmit)="onSubmit()" class="mt-4">
+                <div class="form-group">
+                    <div>
+                        <input type="hidden" name="id" [(ngModel)]="lesson.id" class="form-control" id="inputTitle3" placeholder="Title" required>
+                        <input type="hidden" name="subject_id" [(ngModel)]="lesson.subject_id" class="form-control" id="inputTitle3" placeholder="Title" disabled>
+                        <input type="text" name="subject" [(ngModel)]="lesson.subject" class="form-control" id="inputTitle3" placeholder="Title" disabled>
+                      </div>
+                </div>
+                <div class="form-group">
+                    <div>
+                        <input type="text" name="title" [(ngModel)]="lesson.title" class="form-control" id="inputTitle3" placeholder="Title" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div>
+                        <angular-editor [config]="config" name="body" [(ngModel)]="lesson.body" required></angular-editor>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div>
+                        <button type="submit" class="btn btn-primary" [disabled]="!editLessonForm.valid">Edit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

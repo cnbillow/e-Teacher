@@ -1,0 +1,39 @@
+/* You can add global styles to this file, and also import other style files */
+html,body { 
+    height:100% !important;
+}
+
+.angular-editor-textarea{
+    background-color: white !important;
+}
+
+.card a{
+    color: black !important;
+    text-decoration: none !important;
+}
+.a-teacher:hover, .btnDelete{
+    box-shadow: 0 0 30px rgba(33,33,33,.2);
+    cursor: pointer;
+}
+
+.btnDelete:hover i{
+    color: red !important;
+}
+th{
+    font-size: 17px !important;
+    color: black;
+}
+
+.course {
+    overflow: hidden !important;
+    /* width: 100px; */
+    display: -webkit-box !important;
+    -webkit-line-clamp: 4 !important;
+    -webkit-box-orient: vertical !important;
+}
+
+.form-control:focus{
+    border-color: #23466E !important;
+
+}
+
