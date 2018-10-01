@@ -31,9 +31,9 @@
           
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                  <!-- <div class="form-group row"> -->
-                    <!-- <div class="col-sm-9 offset-2"> -->
-                      <button  id="" type="submit" class="btn btn-primary modalSubmit" id="btnRegisterSubject"  [disabled]="!registerSubjectForm.valid">Add Course</button>
+                  <!-- <div class="form-group row">
+                    <div class="col-sm-9 offset-2"> -->
+                      <button type="submit" class="btn btn-primary modalSubmit" id="btnRegisterSubject"  [disabled]="!registerSubjectForm.valid">Add Course</button>
                     <!-- </div>
                   </div> -->
                 </div>
@@ -45,13 +45,18 @@
   </div>
   <div class="row">
     <div class="col-md-4" *ngFor="let subject of subjects">
-      <a (click)="onSelect(subject)">
-        <div class="card pr-2 a-teacher">
-          <div class="card-header"><strong>{{subject.subject}}</strong></div>
+      <div class="card pr-2 a-teacher">
+        <div class="card-header">
+          <strong>{{subject.subject}}</strong>
+          <div class="remove pull-right">
+              <a (click)="onDelete(subject)"><i class="now-ui-icons ui-1_simple-remove" style="color:red"></i></a>
+            </div>
+        </div>
+        <a (click)="onSelect(subject)">
           <div class="card-body">{{subject.description}}</div>
           <div class="card-footer">{{subject.created_at}}</div>
-        </div>
-      </a>
+        </a>
+      </div>
   </div>
   </div>
 </div>

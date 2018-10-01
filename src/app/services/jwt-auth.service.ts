@@ -139,6 +139,13 @@ export class JwtAuthService {
     return this.http.get(`${this.baseUrl}/deleteCourse/`+subject_id,{headers: httpHeaders,responseType: 'text'});
   }
 
+  deleteSubject(id){
+    const httpHeaders = new HttpHeaders()
+    .set('Content-Type','application/json')
+    .set('Authorization','Bearer '+this.token.get());
+    return this.http.get(`${this.baseUrl}/deleteSubject/`+id,{headers: httpHeaders,responseType: 'text'});
+  }
+
   getType(){
     this.getUserData().subscribe(
       data => this.type = data['type']

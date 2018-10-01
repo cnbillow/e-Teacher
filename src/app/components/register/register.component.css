@@ -1,0 +1,17 @@
+.container-fluid{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.card{
+    background: rgba(42, 87, 136,0.5) !important;
+}
+.card-header{
+    color: white;
+}
+label{
+    color: white;
+}
+.btn{
+    font-size: 12px;
+}

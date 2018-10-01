@@ -44,7 +44,7 @@ const routes: Routes = [
   {
     path: "students",
     component: StudentsComponent,
-    canActivate: [AfterLoginService]
+    canActivate: [AfterLoginService,RoleGuardsService]
   },
   {
     path: "lessons",
@@ -64,17 +64,17 @@ const routes: Routes = [
   {
     path: "your-courses",
     component: SubjectsComponent,
-    canActivate: [AfterLoginService]
+    canActivate: [AfterLoginService,RoleGuardsService]
   },
   {
     path: "your-courses/:id",
     component: CoursesClassComponent,
-    canActivate: [AfterLoginService]
+    canActivate: [AfterLoginService,RoleGuardsService]
   },
   {
     path: "your-courses/:id/lesson/:id",
     component: CourseDetailsComponent,
-    canActivate: [AfterLoginService]
+    canActivate: [AfterLoginService,RoleGuardsService]
   },
   {
     path: "courses",
@@ -89,12 +89,12 @@ const routes: Routes = [
   {
     path: "post",
     component: PostComponent,
-    canActivate: [AfterLoginService]
+    canActivate: [AfterLoginService,RoleGuardsService]
   },
   {
     path: "edit-lesson/:id",
     component: EditLessonComponent,
-    canActivate: [AfterLoginService]
+    canActivate: [AfterLoginService,RoleGuardsService]
   }
 ];
 

@@ -18,7 +18,10 @@ export class SubjectsComponent implements OnInit  {
 
   ngOnInit() {
     this.Jwt.getSubjects().subscribe(
-      data => this.subjects = data
+      data => {
+        this.subjects = data,
+        console.log(this.subjects)
+      }
     );
   }
   onSubmit(){
@@ -30,5 +33,18 @@ export class SubjectsComponent implements OnInit  {
 
   onSelect(subject){
     this.router.navigate(['/your-courses',subject.id])
+  }
+
+  onDelete(subject){
+    if(confirm("Are you sure to delete "+subject.subject)) {
+      this.Jwt.deleteSubject(subject.id).subscribe(
+        data => {
+          this.Jwt.getSubjects().subscribe(
+            data => this.subjects = data
+          );
+        },
+        error => console.log(error)
+      );
+    }
   }
 }

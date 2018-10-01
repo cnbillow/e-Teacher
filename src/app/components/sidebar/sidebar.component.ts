@@ -12,12 +12,14 @@ export class SidebarComponent implements OnInit {
   public user = [];
   public type;
 
+  public tipi;
   constructor(private Jwt: JwtAuthService, private Auth: AuthService) {}
 
   ngOnInit() {
     this.Jwt.getUserData().subscribe(data => {
       this.user = data;
       this.type = data['type'];
+      console.log('TIPI getUserData---',this.type)
    });
   }
 

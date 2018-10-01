@@ -1,7 +1,10 @@
 
 .wrapper-login{
     /* margin-top: 100px; */
+    position: relative;
     height: 100%;
-    background-color: #2CA8FF;
-    padding-top: 15%;
+    /* background-color: #2CA8FF; */
+    background: linear-gradient(to right, #0c2646 0%, #204065 60%, #2a5788 100%);
+    /* padding-top: 20%;
+    padding-bottom: 50%; */
 }
