@@ -25,8 +25,7 @@
               <div class="form-group row">
                 <div class="col-sm-10 offset-2">
                   <button type="submit" class="btn btn-primary btn-sm pull-center" [disabled]="!loginForm.valid">Login</button>
-                
-                  <button routerLink="/register" class="btn btn-primary btn-sm float-right">Register</button>
+                  <button type="button" (click)="registerForm()" class="btn btn-primary btn-sm float-right">Register</button>
                 </div>
               </div>
             </form>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { JwtAuthService } from '../../services/jwt-auth.service';
 import { TokenService } from '../../services/token.service';
 import { Router } from '@angular/router';
@@ -20,6 +20,7 @@ export class RegisterComponent implements OnInit {
   };
   public teachers = [];
   public error = null;
+  @Output() public childValue = new EventEmitter();
 
   constructor(
     private Jwt: JwtAuthService,
@@ -29,9 +30,6 @@ export class RegisterComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.Jwt.getTeachers().subscribe(
-    //   data => this.teachers = data,
-    // );
   }
 
   btnTeachers(){
@@ -50,9 +48,13 @@ export class RegisterComponent implements OnInit {
     this.router.navigateByUrl('/courses');
   }
 
-
   handleError(error){
     this.error = error.error.error;
+  }
+
+  loginForm(){
+    this.childValue.emit(true);
+    this.router.navigate(['/login']);
   }
 
 }

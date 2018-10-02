@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef  } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router, Route } from '@angular/router';
 import { JwtAuthService } from '../../services/jwt-auth.service';
 
@@ -7,23 +7,25 @@ import { JwtAuthService } from '../../services/jwt-auth.service';
   templateUrl: './subjects.component.html',
   styleUrls: ['./subjects.component.css']
 })
-export class SubjectsComponent implements OnInit  {
+export class SubjectsComponent implements OnInit {
 
   public course = {
     subject: null,
     description: null
   };
   public subjects = [];
+  @ViewChild('CloseModalRef') modalElementRef: ElementRef;
+
   constructor(private Jwt: JwtAuthService, private router: Router) { }
 
   ngOnInit() {
     this.Jwt.getSubjects().subscribe(
       data => {
-        this.subjects = data,
-        console.log(this.subjects)
+        this.subjects = data
       }
     );
   }
+
   onSubmit(){
     this.Jwt.addTeacher(this.course).subscribe();
     this.Jwt.getSubjects().subscribe(
@@ -46,5 +48,10 @@ export class SubjectsComponent implements OnInit  {
         error => console.log(error)
       );
     }
+  }
+
+  hideModal(){
+    this.modalElementRef.nativeElement.click();
+    // console.log(this.modalElementRef)
   }
 }

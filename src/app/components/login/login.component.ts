@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { JwtAuthService } from '../../services/jwt-auth.service';
 import { TokenService } from '../../services/token.service';
 import { Router } from '@angular/router';
@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   };
 
   public error = null;
+  @Output() public childValue = new EventEmitter();
 
   constructor(
     private Jwt: JwtAuthService,
@@ -43,6 +44,11 @@ export class LoginComponent implements OnInit {
 
   handleError(error) {
     this.error = error.error.error;
+  }
+
+  registerForm(){
+    this.childValue.emit(false);
+    this.router.navigate(['/register']);
   }
 
 }

@@ -19,7 +19,6 @@ export class SidebarComponent implements OnInit {
     this.Jwt.getUserData().subscribe(data => {
       this.user = data;
       this.type = data['type'];
-      console.log('TIPI getUserData---',this.type)
    });
   }
 

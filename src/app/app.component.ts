@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from './services/auth.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { TokenService } from './services/token.service';
 import { JwtAuthService } from './services/jwt-auth.service';
 
@@ -12,7 +12,14 @@ import { JwtAuthService } from './services/jwt-auth.service';
 export class AppComponent {
   title = 'e-teacher';
   public loggedIn : boolean;
-  constructor(private Auth : AuthService, private router: Router,private Token : TokenService,private Jwt: JwtAuthService) {}
+  public flag = true;
+
+  constructor(
+    private Auth : AuthService,
+    private router: Router,
+    private Token : TokenService,
+    private Jwt: JwtAuthService
+  ) {}
 
   ngOnInit() {
     this.Auth.authStatus.subscribe(value => this.loggedIn = value);
@@ -21,5 +28,8 @@ export class AppComponent {
   onSubmit(){
   }
 
+  onMessage(){
+    console.log(this.flag)
+  }
   
 }

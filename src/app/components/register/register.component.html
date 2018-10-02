@@ -53,7 +53,7 @@
               <div class="form-group row">
                 <div class="col-sm-9 offset-3">
                   <button type="submit" class="btn btn-primary btn-sm" [disabled]="!signupForm.valid">Register</button>
-                  <button routerLink="/login" class="btn btn-primary btn-sm float-right">Login</button>
+                  <button type="button" (click)="loginForm()" class="btn btn-primary btn-sm float-right">Login</button>
                 </div>
               </div>
             </form>
