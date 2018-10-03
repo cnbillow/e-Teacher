@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { JwtAuthService } from '../../services/jwt-auth.service';
 import { TokenService } from '../../services/token.service';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { PassingDataService } from '../../services/passing-data.service';
 
 @Component({
   selector: 'app-profile',
@@ -12,13 +13,23 @@ import { Router } from '@angular/router';
 export class ProfileComponent implements OnInit {
 
   public user = [];
-  public teachers = [];
   public error = null;
-  constructor(private Jwt: JwtAuthService,private Token: TokenService, private Auth: AuthService, private router: Router) { }
+  private valuePass: boolean;
+
+  constructor(
+    private Jwt: JwtAuthService,
+    private Token: TokenService, 
+    private Auth: AuthService, 
+    private router: Router,
+    private passingData: PassingDataService
+    ) { }
 
   ngOnInit() {
     this.Jwt.getUserData().subscribe(
-      data => this.user = data,
+      data => {
+        this.user = data,
+        this.user['type'] = false
+      }
     );
   }
 
@@ -29,6 +40,7 @@ export class ProfileComponent implements OnInit {
       },
       error => console.log(error)
     );
+    this.passingData.emit(this.user['type']);
   }
 
 

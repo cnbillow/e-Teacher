@@ -14,7 +14,7 @@ import { ISubject } from '../Interfaces/subject';
 export class JwtAuthService {
 
   private baseUrl = 'http://localhost:8000/api';
-
+  public testType;
   public type;
 
   constructor(private http: HttpClient, private token: TokenService) { }

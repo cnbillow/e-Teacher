@@ -28,7 +28,7 @@
           <div class="form-group row">
             <label for="inputPassword3" class="col-sm-4 col-form-label">Do you want to become a teacher?</label>
             <div class="col-sm-8">
-              <input type="checkbox" name="type" [(ngModel)]="user.type"  class="" id="inputType3" required>
+              <input type="checkbox" name="type" [(ngModel)]="user.type"  class="" id="inputType3" [checked]="valuePass" required>
             </div>
           </div>
           <hr>
@@ -38,6 +38,7 @@
             </div>
           </div>
         </form>
+        {{valuePass}}
     </div>
   </div>
 </div>

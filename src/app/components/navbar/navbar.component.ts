@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { JwtAuthService } from '../../services/jwt-auth.service';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
@@ -9,15 +9,25 @@ import { TokenService } from '../../services/token.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnChanges {
 
+  @Input() typeFlagNavbar: boolean;
   public user = [];
   public type;
 
   constructor(private Auth : AuthService, private router: Router,private Token : TokenService,private Jwt: JwtAuthService) {}
 
   ngOnInit() {
-    this.Jwt.getUserData().subscribe(data => {
+    this.Jwt.getUserData().subscribe(
+      data => {
+      this.user = data;
+      this.type = data['type'];
+   });
+  }
+
+  ngOnChanges(change: SimpleChanges){
+    this.Jwt.getUserData().subscribe(
+      data => {
       this.user = data;
       this.type = data['type'];
    });
@@ -29,5 +39,6 @@ export class NavbarComponent implements OnInit {
     this.Auth.changeAuthStatus(false);
     this.router.navigateByUrl('/login');
   }
+
 
 }

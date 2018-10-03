@@ -4,14 +4,15 @@
   <!-- <router-outlet></router-outlet> -->
 </div>
 <div class="wrapper" *ngIf="loggedIn">
-  <app-sidebar></app-sidebar>
+  <app-sidebar [typeFlagSidebar]="flag"></app-sidebar>
   <div class="main-panel">
-    <app-navbar></app-navbar>
+    <!-- <app-navbar [typeFlagNavbar]="flag"></app-navbar> -->
+    
     <div class="panel-header panel-header-sm">
     </div>
     <!-- MAIN -->
     <div class="content">
-      <router-outlet></router-outlet>
+      <router-outlet (update)="flag=$event"></router-outlet>
     </div>
     <footer class="footer">
       <div class="container-fluid">
