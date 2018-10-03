@@ -13,6 +13,7 @@ import { PassingDataService } from './services/passing-data.service';
 export class AppComponent {
   title = 'e-teacher';
   public loggedIn : boolean;
+  public content: boolean = true;
   public flag : boolean;
 
   constructor(

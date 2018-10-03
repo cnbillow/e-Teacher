@@ -1,6 +1,6 @@
 <div class="wrapper-login"  *ngIf="!loggedIn">
-  <app-login (childValue)="flag=$event" *ngIf="flag"></app-login>
-  <app-register (childValue)="flag=$event" *ngIf="!flag"></app-register>
+  <app-login (childValue)="content=$event" *ngIf="content"></app-login>
+  <app-register (childValue)="content=$event" *ngIf="!content"></app-register>
   <!-- <router-outlet></router-outlet> -->
 </div>
 <div class="wrapper" *ngIf="loggedIn">
